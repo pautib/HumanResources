@@ -1,9 +1,14 @@
 package org.pautib.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Address {
 
+    @Column(name = "STREET_ADDRESS")
     private String streetAddress;
-
+    @Column(name = "ZIP_CODE")
     private String zipCode;
 
     private String city;

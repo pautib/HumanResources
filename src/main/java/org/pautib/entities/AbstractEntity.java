@@ -1,20 +1,30 @@
 package org.pautib.entities;
 
-import javax.persistence.Version;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
 
+@MappedSuperclass
 public class AbstractEntity implements Serializable {
+    public AbstractEntity() {
+        this.createdOn = LocalDateTime.now();
+        this.updatedOn = LocalDateTime.now();
+    }
 
-    protected Long id;
-    protected String userEmail;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", nullable = false)
+    private Long id;
 
     @Version
     protected Long version;
 
+    @Column(name = "CREATED_ON")
     protected LocalDateTime createdOn;
 
+    @Column(name = "UPDATED_ON")
     protected LocalDateTime updatedOn;
 
 
@@ -24,14 +34,6 @@ public class AbstractEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }
 
     public Long getVersion() {

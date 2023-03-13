@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="2023-03-10-001" author="pautib">
+        <loadUpdateData tableName="Employee" primaryKey="ID" file="data/sample-employees.csv">
+            <column header="FULL_NAME" name="FULL_NAME" type="STRING"/>
+            <column header="SOCIAL_SECURITY_NUMBER" name="SOCIAL_SECURITY_NUMBER" type="STRING"/>
+            <column header="DATE_OF_BIRTH" name="DATE_OF_BIRTH" type="DATE"/>
+            <column header="BASIC_SALARY" name="BASIC_SALARY" type="NUMERIC"/>
+            <column header="HIRED_DATE" name="HIRED_DATE" type="DATE"/>
+        </loadUpdateData>
+
+    </changeSet>
+
+</databaseChangeLog>
